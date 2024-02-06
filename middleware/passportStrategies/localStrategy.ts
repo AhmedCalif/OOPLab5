@@ -21,7 +21,7 @@ const localStrategy = new LocalStrategy(
 /*
 FIX ME (types) 😭
 */
-passport.serializeUser(function (user: any, done: any) {
+passport.serializeUser(function (user: Express.User, done: any) {
   done(null, user.id);
 });
 
