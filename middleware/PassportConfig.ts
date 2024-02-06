@@ -3,8 +3,6 @@ import passport from 'passport';
 import { PassportStrategy } from '../interfaces';
 
 export default class PassportConfig {
-
-    private strategies: PassportStrategy[]
     /*
      FIX ME 😭
      The problem with this class is... if the caller forgets to call
@@ -17,7 +15,6 @@ export default class PassportConfig {
      passport strategies are added when this class is created. ⭐️
     */
     constructor (strategies: PassportStrategy[]) {
-        this.strategies = strategies;
         this.addStrategies(strategies);
 
     }
