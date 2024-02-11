@@ -1,20 +1,26 @@
 import express from "express";
 import passport from 'passport';
 import { forwardAuthenticated } from "../middleware/checkAuth";
+import flash from "connect-flash";
 
 const router = express.Router();
 
+router.use(flash());
+
 router.get("/login", forwardAuthenticated, (req, res) => {
-  res.render("login");
-})
+  res.render("login", {
+    failureMessage: req.flash("error"),
+  });
+});
+
 
 router.post(
   "/login",
   passport.authenticate("local", {
     successRedirect: "/dashboard",
     failureRedirect: "/auth/login",
-    failureMessage: "Incorrect Password"
-    /* FIX ME: 😭 failureMsg needed when login fails */
+    failureFlash: true
+    
   })
 );
 

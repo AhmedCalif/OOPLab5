@@ -4,6 +4,7 @@ import session from "express-session";
 import path from "path";
 import passportMiddleware from './middleware/passportMiddleware';
 
+
 const port = process.env.port || 8000;
 
 const app = express();
@@ -18,6 +19,7 @@ declare global {
     }
   }
 }
+
 
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
